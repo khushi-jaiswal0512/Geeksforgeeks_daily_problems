@@ -1,0 +1,28 @@
+class Solution {
+    public long kthElement(int k, int arr1[], int arr2[]) {
+        // code here
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        int n = arr1.length;
+        int m = arr2.length;
+        int []arr = new int[n+m];
+        while(a<n && b<m){
+            if(arr1[a]<=arr2[b]){
+                arr[c++] = arr1[a++];
+            } else{
+                arr[c++] = arr2[b++];
+            }
+        }
+        if(a<n){
+            while(a<n){
+                arr[c++] = arr1[a++];
+            }
+        } else{
+            while(b<m){
+                arr[c++] = arr2[b++];
+            }
+        }
+        return arr[k-1];
+    }
+}
