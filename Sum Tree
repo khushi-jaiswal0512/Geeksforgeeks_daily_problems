@@ -1,0 +1,10 @@
+class Solution {
+    boolean isSumTree(Node root) {
+        if(root==null || (root.left==null && root.right==null))
+            return true;
+        if(!(isSumTree(root.left) && isSumTree(root.right)))
+            return false;
+        return (root.left!=null?(root.left.left==null && root.left.right==null)?root.left.data:root.left.data*2:0) +
+               (root.right!=null?(root.right.left==null && root.right.right==null)?root.right.data:root.right.data*2:0) == root.data;
+    }
+}
