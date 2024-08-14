@@ -1,0 +1,49 @@
+class Solution {
+    public int longestCommonSubstr(String str1, String str2) {
+        
+
+        // if both equal then returning length of it
+        if( str1.equals(str2) ){
+            return str1.length();
+        }
+        
+        int answer = 0;
+        int ans = 0;
+        
+        int n = str1.length();
+        int m = str2.length();
+        
+        int x,y;
+        
+
+        // loop for fetching character from first string
+        for( int i=0;i<n;i++){
+
+            // loop for fetching character from secondstring
+            for( int j=0;j<m;j++ ){
+
+                // clone index of i and j index for string
+                x = i;
+                y = j;
+
+                // checks is clone of both are less than their respective string length                        // and as per character matches clone variable values increased
+                while( x < n && y < m && str1.charAt(x) == str2.charAt(y) ){
+                    x++;
+                    y++;
+                    answer ++;
+                }
+
+                // maximum of ans that is biggest length answer that is current                                // length whoever big will be stored in biggest length that is ans
+                if( answer > ans ){
+                    ans = answer;
+                }
+
+                // answer reset to 0 so for new loop current answer start with 0
+                answer = 0;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
