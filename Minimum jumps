@@ -1,0 +1,20 @@
+class Solution {
+    static int minJumps(int[] arr) {
+        int jumps=0, max=0, stop_jump=0, n=arr.length;
+        for(int i=0;i<n;i++){
+            stop_jump = Math.max(stop_jump, i+arr[i]);
+            
+            if(max==i){
+                //this is the last idx no need to jump further
+                if(i==n-1)  break;
+                jumps++;
+                max = stop_jump;
+            }
+            //we can't reach this idx
+            else if(max<i){
+                return -1;
+            }
+        }
+        return jumps;
+    }
+}
