@@ -1,0 +1,46 @@
+class Solution
+{
+    //Function to convert binary tree to doubly linked list and return it.
+    Node bToDLL(Node root)
+    {
+          
+	//  Your code here	
+	ArrayList<Integer> arr = new ArrayList<Integer>();
+	
+	 rootrev(root, arr);
+        // Create a New Node to transfar all data in new Node.
+     Node head = new Node(arr.get(0));
+     head.left = null;
+
+     Node current = head;
+
+     for(int i = 1; i < arr.size(); i++){
+
+         Node temp = new Node(arr.get(i));
+
+         current.right = temp;
+
+         temp.left = current;
+
+         temp.right = null;
+
+         current = temp;
+
+     }
+     // return new Node
+     return head;
+    }
+    
+// Trtansfar all data in ArrayList.
+     void rootrev(Node head, ArrayList<Integer> arr){
+
+        if(head == null) return;
+
+        rootrev(head.left, arr);
+
+        arr.add(head.data);
+
+        rootrev(head.right, arr);
+
+    }
+}
