@@ -1,0 +1,22 @@
+class Solution {
+    public static int rotateDelete(ArrayList<Integer> arr) {
+        // code here
+        int n=arr.size();
+        int k=1;
+        
+        for(int i=0; i<n-1; i++){
+            int temp=arr.get(arr.size()-1);
+            arr.remove(arr.size()-1);
+            arr.add(0, temp);
+            if(k>arr.size()){
+                arr.remove(0);
+            }
+            if(arr.size()-k>=0){
+                arr.remove(arr.size()-k);
+            }
+            k++;
+        }
+        
+        return arr.get(0);
+    }
+}
